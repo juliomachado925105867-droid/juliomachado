@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="pt-AO" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IM MACHADO — Streetwear Oficial | Luanda</title>
+
+  <!-- Ícone / Referência Oficial da Marca IM MACHADO no Head -->
+  <link id="head-favicon" rel="icon" type="image/jpeg" href="./IMG-20261123-WA0007.jpg" />
+  <link rel="apple-touch-icon" href="./IMG-20261123-WA0007.jpg" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fontes Tipográficas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Great+Vibes&family=Inter:wght@300;400;500;600;700;800;900&family=UnifrakturMaguntia&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    // Configuração de tokens de design e fontes da marca IM MACHADO
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            gothic: ['UnifrakturMaguntia', 'serif'],
+            serifLuxury: ['Cinzel', 'serif'],
+            script: ['Great Vibes', 'cursive'],
+          },
+          colors: {
+            brand: {
+              black: '#09090b',
+              deep: '#0a0a0a',
+              card: '#18181b',
+              border: '#27272a',
+              muted: '#71717a',
+              silver: '#d4d4d8',
+              white: '#ffffff',
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Base monocromática em Preto, Branco e Cinzento */
+    body {
+      background-color: #09090b;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Grade de estúdio fotográfico */
+    .bg-studio-grid {
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 62%),
+        radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 100% 100%, 26px 26px;
+    }
+
+    /* Perspectiva 3D para visualização interativa de vestuário */
+    .stage-3d {
+      perspective: 1150px;
+    }
+
+    .garment-3d {
+      transition: transform 0.22s ease-out, filter 0.3s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    @keyframes floatGarment {
+      0%, 100% {
+        transform: translateY(0px) rotateY(-3deg);
+      }
+      50% {
+        transform: translateY(-9px) rotateY(3deg);
+      }
+    }
+
+    .garment-float {
+      animation: floatGarment 4.8s ease-in-out infinite;
+    }
+
+    /* Barra de rolagem discreta */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #71717a;
+    }
+
+    @keyframes toastIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .toast-anim {
+      animation: toastIn 0.25s ease forwards;
+    }
+  </style>
+</head>
+<body class="bg-brand-black text-white antialiased selection:bg-white selection:text-black">
+
+  <!-- =====================================================================
+       1. CABEÇALHO FIXO E RESPONSIVO
+  ====================================================================== -->
+  <header class="fixed top-0 inset-x-0 z-40 bg-brand-deep/90 backdrop-blur-xl border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+      <!-- Logotipo Oficial IM MACHADO como Referência da Marca -->
+      <a href="#inicio" class="flex items-center gap-3.5 group shrink-0">
+        <div class="w-12 h-12 rounded-xl bg-white border border-brand-silver flex items-center justify-center overflow-hidden p-1 shadow-md group-hover:scale-105 transition-transform">
+          <img
+            id="header-brand-logo"
+            src="./IMG-20261123-WA0007.jpg"
+            alt="Logotipo Oficial IM MACHADO"
+            class="w-full h-full object-contain"
+          />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-gothic text-xl sm:text-2xl tracking-wider text-white leading-none">
+            IM MACHADO
+          </span>
+          <span class="text-[10px] uppercase tracking-[0.24em] text-brand-silver mt-1">
+            Luanda • Gola a Cutar
+          </span>
+        </div>
+      </a>
+
+      <!-- Navegação Principal -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-silver">
+        <a href="#tshirts" class="hover:text-white transition-colors">T-Shirts</a>
+        <a href="#futuros" class="hover:text-white transition-colors">Próximos Lançamentos</a>
+        <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+      </nav>
+
+      <!-- Botões de Ação: WhatsApp (apenas por clique) + Sacola + Menu Mobile -->
+      <div class="flex items-center gap-2 sm:gap-2.5">
+        <button
+          type="button"
+          onclick="openWhatsApp('Olá IM MACHADO! Gostaria de falar com o atendimento sobre os produtos.')"
+          class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-brand-card hover:bg-zinc-800 border border-brand-border text-xs font-bold text-white transition-all active:scale-95"
+        >
+          <i data-lucide="message-circle" class="w-4 h-4 text-white"></i>
+          <span>WhatsApp</span>
+        </button>
+
+        <button
+          type="button"
+          onclick="toggleCartDrawer(true)"
+          class="relative inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-brand-silver text-black text-xs sm:text-sm font-extrabold transition-all active:scale-95"
+        >
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span>Sacola</span>
+          <span
+            id="cart-count-badge"
+            class="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-brand-black text-white text-[11px] font-black"
+          >
+            0
+          </span>
+        </button>
+
+        <button
+          type="button"
+          onclick="toggleMobileMenu()"
+          aria-label="Abrir menu de navegação"
+          class="lg:hidden p-2.5 rounded-xl bg-brand-card hover:bg-zinc-800 border border-brand-border text-white"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile Expansível -->
+    <div id="mobile-nav" class="hidden lg:hidden bg-brand-card border-b border-brand-border px-4 py-4 space-y-2.5">
+      <a href="#tshirts" onclick="toggleMobileMenu()" class="block py-2 text-sm font-semibold text-white border-b border-brand-border">
+        T-Shirts
+      </a>
+      <a href="#futuros" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-brand-silver border-b border-brand-border">
+        Próximos Lançamentos
+      </a>
+      <a href="#sobre" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-brand-silver border-b border-brand-border">
+        Sobre
+      </a>
+      <button
+        type="button"
+        onclick="toggleMobileMenu(); openWhatsApp('Olá IM MACHADO! Gostaria de atendimento no WhatsApp.');"
+        class="w-full mt-2 py-3 rounded-xl bg-white text-black font-extrabold text-xs flex items-center justify-center gap-2"
+      >
+        <i data-lucide="message-circle" class="w-4 h-4"></i>
+        <span>Atendimento WhatsApp (+244 925 105 867)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       2. HERO DINÂMICO — ESTÚDIO 3D DE T-SHIRTS (SEM PESSOAS)
+  ====================================================================== -->
+  <section id="inicio" class="pt-28 pb-16 sm:pt-36 sm:pb-24 bg-studio-grid border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+
+        <!-- Coluna Esquerda: Identidade e Chamada -->
+        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-card border border-brand-border text-[11px] font-bold uppercase tracking-[0.2em] text-brand-silver">
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            <span>Coleção Oficial • Luanda — Angola</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-[1.06] text-white">
+            T-Shirts Oversized <span class="text-brand-muted">Frente &amp; Verso</span> em 3D.
+          </h1>
+
+          <p class="text-sm sm:text-base text-brand-silver max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            Peças <strong class="text-white">IM MACHADO</strong> em <strong class="text-white">Branco</strong> e <strong class="text-white">Preto</strong> sem pessoas, com corte oversized estruturado, monograma gótico <strong class="text-white">IM</strong> no peito esquerdo e assinatura <strong class="text-white">IM MACHADO</strong> nas costas. Mova o cursor ou arraste no toque para inclinar em 3D e alterne entre Frente e Verso.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
+            <a
+              href="#tshirts"
+              class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-white hover:bg-brand-silver text-black font-extrabold text-xs sm:text-sm transition-all flex items-center justify-center gap-2"
+            >
+              <span>Ver T-Shirts Disponíveis</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <button
+              type="button"
+              onclick="openWhatsApp('Olá IM MACHADO! Quero encomendar uma T-Shirt Oversized.')"
+              class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-brand-card hover:bg-zinc-800 border border-brand-border text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2"
+            >
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>Pedir no WhatsApp</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 pt-5 border-t border-brand-border max-w-md mx-auto lg:mx-0">
+            <div>
+              <p class="text-lg sm:text-xl font-black text-white">Frente/Verso</p>
+              <p class="text-xs text-brand-muted">Estampa Completa</p>
+            </div>
+            <div>
+              <p class="text-lg sm:text-xl font-black text-white">S – XXL</p>
+              <p class="text-xs text-brand-muted">Tamanhos Variados</p>
+            </div>
+            <div>
+              <p class="text-lg sm:text-xl font-black text-white">925 105 867</p>
+              <p class="text-xs text-brand-muted">WhatsApp Oficial</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Visualizador 3D Interativo -->
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl bg-brand-card border border-brand-border p-5 sm:p-7 shadow-2xl">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-silver">
+                <i data-lucide="box" class="w-4 h-4 text-white"></i>
+                <span id="hero-status-label">T-Shirt Branca • Frente</span>
+              </div>
+
+              <!-- Seletor de Cor: Branca / Preta -->
+              <div class="flex items-center gap-1.5 bg-brand-black p-1 rounded-xl border border-brand-border">
+                <button
+                  type="button"
+                  id="hero-btn-white"
+                  onclick="updateHeroViewer('white', null)"
+                  class="px-3 py-1.5 rounded-lg text-xs font-extrabold bg-white text-black transition-all"
+                >
+                  Branca
+                </button>
+                <button
+                  type="button"
+                  id="hero-btn-black"
+                  onclick="updateHeroViewer('black', null)"
+                  class="px-3 py-1.5 rounded-lg text-xs font-bold text-brand-silver hover:text-white transition-all"
+                >
+                  Preta
+                </button>
+              </div>
+            </div>
+
+            <!-- Palco 3D com Inclinação por Mouse/Toque -->
+            <div
+              id="hero-3d-stage"
+              class="stage-3d relative h-[340px] sm:h-[400px] rounded-2xl bg-white border-2 border-brand-silver flex items-center justify-center p-5 cursor-grab active:cursor-grabbing select-none overflow-hidden shadow-inner"
+              onmousemove="tiltGarment(event, 'hero-3d-garment')"
+              onmouseleave="resetGarmentTilt('hero-3d-garment')"
+              ontouchmove="touchTiltGarment(event, 'hero-3d-garment')"
+              ontouchend="resetGarmentTilt('hero-3d-garment')"
+            >
+              <div class="absolute bottom-4 w-48 h-5 rounded-full bg-black/15 blur-md pointer-events-none"></div>
+
+              <div id="hero-3d-garment" class="garment-3d garment-float w-full max-w-[270px] sm:max-w-[310px] flex items-center justify-center">
+                <img
+                  id="hero-garment-img"
+                  src="./IMG-20261123-WA7356.jpg"
+                  alt="T-Shirt IM MACHADO 3D"
+                  class="w-full max-h-[325px] object-contain pointer-events-none select-none rounded-xl"
+                />
+              </div>
+            </div>
+
+            <!-- Controles Inferiores: Frente / Verso + Adicionar à Sacola -->
+            <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-brand-border">
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  type="button"
+                  id="hero-btn-front"
+                  onclick="updateHeroViewer(null, 'front')"
+                  class="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-white text-black text-xs font-extrabold uppercase tracking-wider transition-all"
+                >
+                  Frente
+                </button>
+                <button
+                  type="button"
+                  id="hero-btn-back"
+                  onclick="updateHeroViewer(null, 'back')"
+                  class="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-brand-black text-brand-silver hover:text-white border border-brand-border text-xs font-bold uppercase tracking-wider transition-all"
+                >
+                  Verso
+                </button>
+              </div>
+
+              <button
+                type="button"
+                onclick="addHeroToCart()"
+                class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-brand-border text-white text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-95"
+              >
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Adicionar à Sacola</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       3. CATÁLOGO PRINCIPAL — T-SHIRTS DISPONÍVEIS AGORA
+  ====================================================================== -->
+  <section id="tshirts" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+      <div>
+        <span class="text-xs font-extrabold uppercase tracking-[0.24em] text-brand-muted">Pronta Entrega • Sem Pessoas</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">T-Shirts Disponíveis Agora</h2>
+      </div>
+      <p class="text-xs sm:text-sm text-brand-silver max-w-md">
+        Visualize cada T-Shirt isolada em 3D na <strong class="text-white">Frente</strong> (monograma gótico <span class="font-gothic text-base">IM</span> no peito esquerdo) e no <strong class="text-white">Verso</strong> (<span class="font-gothic text-base">IM MACHADO</span> em arco + <span class="font-script text-lg">Machado</span> por baixo).
+      </p>
+    </div>
+
+    <div id="available-tshirts-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Renderizado dinamicamente por JavaScript -->
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       4. PRÓXIMOS LANÇAMENTOS (CASACOS, CALÇÕES, CHAPÉUS E CHINELAS)
+  ====================================================================== -->
+  <section id="futuros" class="py-16 sm:py-24 bg-brand-deep border-y border-brand-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs font-extrabold uppercase tracking-[0.24em] text-brand-muted">Em Breve • Preto, Branco &amp; Cinzento</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">Próximos Lançamentos IM MACHADO</h2>
+          <p class="text-xs sm:text-sm text-brand-silver mt-2 max-w-2xl">
+            Casacos, Calções, Chapéus e Chinelas assinados pela marca. Altere a cor em tempo real entre <strong class="text-white">Preto</strong>, <strong class="text-white">Branco</strong> e <strong class="text-white">Cinzento</strong>, amplie para ver detalhes e reserve no WhatsApp.
+          </p>
+        </div>
+
+        <!-- Filtros de Categoria -->
+        <div class="flex flex-wrap gap-2" id="future-category-filters">
+          <button
+            type="button"
+            data-cat="all"
+            onclick="setFutureCategory('all')"
+            class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-white text-black transition-all"
+          >
+            Todos
+          </button>
+          <button
+            type="button"
+            data-cat="casaco"
+            onclick="setFutureCategory('casaco')"
+            class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-card text-brand-silver hover:text-white border border-brand-border transition-all"
+          >
+            Casacos
+          </button>
+          <button
+            type="button"
+            data-cat="calcao"
+            onclick="setFutureCategory('calcao')"
+            class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-card text-brand-silver hover:text-white border border-brand-border transition-all"
+          >
+            Calções
+          </button>
+          <button
+            type="button"
+            data-cat="chapeu"
+            onclick="setFutureCategory('chapeu')"
+            class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-card text-brand-silver hover:text-white border border-brand-border transition-all"
+          >
+            Chapéus
+          </button>
+          <button
+            type="button"
+            data-cat="chinela"
+            onclick="setFutureCategory('chinela')"
+            class="cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-card text-brand-silver hover:text-white border border-brand-border transition-all"
+          >
+            Chinelas
+          </button>
+        </div>
+      </div>
+
+      <div id="future-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Renderizado dinamicamente por JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       5. SOBRE A MARCA & CARREGADOR DE FOTOS LOCAIS (FILEREADER)
+  ====================================================================== -->
+  <section id="sobre" class="py-16 sm:py-24 bg-brand-black">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-card border border-brand-border">
+        <span class="font-gothic text-3xl text-white">IM</span>
+      </div>
+
+      <h2 class="text-2xl sm:text-4xl font-black text-white">IM MACHADO — Luanda, Angola</h2>
+      <p class="text-xs sm:text-base text-brand-silver max-w-2xl mx-auto leading-relaxed">
+        Marca de streetwear fundada em <strong class="text-white">Luanda — Gola a Cutar</strong>, focada em peças monocromáticas em <strong class="text-white">Preto</strong>, <strong class="text-white">Branco</strong> e <strong class="text-white">Cinzento</strong> com identidade gótica marcante. O atendimento no WhatsApp (<strong class="text-white">+244 925 105 867</strong>) só é aberto quando você clica em um botão de contacto ou pedido.
+      </p>
+
+      <!-- Painel de Conferência dos Arquivos na Mesma Pasta (./) + FileReader -->
+      <div class="mt-10 pt-8 border-t border-brand-border text-left rounded-2xl bg-brand-card/70 p-5 border">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <p class="text-xs font-extrabold uppercase tracking-wider text-white">
+              Arquivos Configurados na Mesma Pasta do index.html (./)
+            </p>
+            <p class="text-[11px] text-brand-muted mt-0.5">
+              Coloque o <code class="text-white">index.html</code> e as fotos na mesma pasta ou use o botão para testar JPGs locais via FileReader:
+            </p>
+          </div>
+          <label class="cursor-pointer inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-black hover:bg-zinc-800 border border-brand-border text-xs font-bold text-white shrink-0">
+            <i data-lucide="upload" class="w-4 h-4"></i>
+            <span>Testar JPGs Localmente</span>
+            <input
+              id="local-jpg-input"
+              type="file"
+              accept="image/*"
+              multiple
+              class="hidden"
+              onchange="handleLocalFilesUpload(event)"
+            />
+          </label>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-[11px] text-brand-silver bg-brand-black/80 p-3.5 rounded-xl border border-brand-border font-mono">
+          <div>• <span class="text-white">IMG-20261123-WA0007.jpg</span> (Logotipo)</div>
+          <div>• <span class="text-white">IMG-20261123-WA7356.jpg</span> (Branca Frente)</div>
+          <div>• <span class="text-white">IMG-20261123-WA2603.jpg</span> (Branca Verso)</div>
+          <div>• <span class="text-white">IMG-20261123-WA2504.jpg</span> (Preta Frente)</div>
+          <div>• <span class="text-white">IMG-20261123-WA2423.jpg</span> (Preta Verso)</div>
+        </div>
+
+        <div id="local-uploaded-preview" class="mt-4 hidden grid-cols-2 sm:grid-cols-4 gap-3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       6. RODAPÉ & BOTÃO WHATSAPP FLUTUANTE (SOMENTE POR CLIQUE)
+  ====================================================================== -->
+  <footer class="bg-brand-black border-t border-brand-border py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-muted">
+      <div class="flex items-center gap-2">
+        <span class="font-serifLuxury font-bold text-white tracking-widest">IM MACHADO</span>
+        <span>•</span>
+        <span>Luanda — Gola a Cutar</span>
+      </div>
+      <button
+        type="button"
+        onclick="openWhatsApp('Olá IM MACHADO! Gostaria de informações sobre os produtos.')"
+        class="text-brand-silver hover:text-white font-semibold underline underline-offset-4"
+      >
+        WhatsApp: +244 925 105 867
+      </button>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante WhatsApp (Abre apenas ao clicar) -->
+  <button
+    type="button"
+    onclick="openWhatsApp('Olá IM MACHADO! Preciso de atendimento sobre as T-Shirts e próximos lançamentos.')"
+    aria-label="Abrir WhatsApp IM MACHADO"
+    class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 px-4 py-3.5 rounded-full bg-white hover:bg-brand-silver text-black font-extrabold text-xs shadow-2xl border border-brand-border transition-all active:scale-95"
+  >
+    <i data-lucide="message-circle" class="w-5 h-5"></i>
+    <span>925 105 867</span>
+  </button>
+
+  <!-- =====================================================================
+       7. GAVETA LATERAL DA SACOLA (CARRINHO)
+  ====================================================================== -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div onclick="toggleCartDrawer(false)" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+    <aside class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-brand-card border-l border-brand-border flex flex-col">
+      <div class="p-5 sm:p-6 border-b border-brand-border flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-white"></i>
+          <h3 class="font-extrabold text-base sm:text-lg text-white">Sacola IM MACHADO</h3>
+        </div>
+        <button
+          type="button"
+          onclick="toggleCartDrawer(false)"
+          aria-label="Fechar sacola"
+          class="p-2 rounded-xl bg-brand-black text-brand-silver hover:text-white border border-brand-border"
+        >
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4">
+        <!-- Renderizado por JavaScript -->
+      </div>
+
+      <div class="p-5 sm:p-6 border-t border-brand-border bg-brand-deep space-y-4">
+        <div class="flex items-center justify-between text-xs sm:text-sm">
+          <span class="text-brand-silver">Total de Peças</span>
+          <span id="cart-drawer-total" class="font-black text-white">0 peças</span>
+        </div>
+        <button
+          type="button"
+          onclick="checkoutCartWhatsApp()"
+          class="w-full py-4 rounded-2xl bg-white hover:bg-brand-silver text-black font-black text-xs sm:text-sm flex items-center justify-center gap-2 transition-all active:scale-95"
+        >
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          <span>Finalizar no WhatsApp (+244 925 105 867)</span>
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- =====================================================================
+       8. MODAL DE VISUALIZAÇÃO AMPLIADA (QUICK VIEW)
+  ====================================================================== -->
+  <div id="quick-view-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closeQuickViewModal()" class="absolute inset-0 bg-black/85 backdrop-blur-md"></div>
+    <div
+      id="quick-view-panel"
+      class="relative z-10 w-full max-w-3xl rounded-3xl bg-brand-card border border-brand-border p-5 sm:p-8 max-h-[92vh] overflow-y-auto"
+    >
+      <!-- Renderizado por JavaScript -->
+    </div>
+  </div>
+
+  <!-- Notificações Toast Discretas -->
+  <div id="toast-box" class="fixed bottom-24 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+  <!-- =====================================================================
+       9. SCRIPT PRINCIPAL: FOTOS LOCAIS (./), ILUSTRAÇÕES SVG 3D, 3D & WHATSAPP
+  ====================================================================== -->
+  <script>
+    const WHATSAPP_PHONE = '244925105867';
+
+    // Caminhos exatos das fotos na mesma pasta (./) com cadeias de fallback solicitadas
+    const ASSET_PATHS = {
+      logo: [
+        './IMG-20261123-WA0007.jpg',
+        './IMG-20261123-WA0007_4.jpg',
+        './IMG-20261123-WA0007_3.jpg',
+        './IMG-20261123-WA0007_2.jpg',
+        './IMG-20261123-WA0007.jpg',
+      ],
+      tshirtWhiteFront: [
+        './IMG-20261123-WA7356.jpg',
+        './IMG-20261123-WA7356_3.jpg',
+        './IMG-20261123-WA7356_2.jpg',
+        './IMG-20261123-WA7356.jpg',
+      ],
+      tshirtWhiteBack: [
+        './IMG-20261123-WA2603.jpg',
+        './IMG-20261123-WA2603_4.jpg',
+        './IMG-20261123-WA2603_3.jpg',
+        './IMG-20261123-WA2603_2.jpg',
+        './IMG-20261123-WA2603.jpg',
+      ],
+      tshirtBlackFront: [
+        './IMG-20261123-WA2504.jpg',
+        './IMG-20261123-WA2504_3.jpg',
+        './IMG-20261123-WA2504_2.jpg',
+        './IMG-20261123-WA2504.jpg',
+      ],
+      tshirtBlackBack: [
+        './IMG-20261123-WA2423.jpg',
+        './IMG-20261123-WA2423_4.jpg',
+        './IMG-20261123-WA2423_3.jpg',
+        './IMG-20261123-WA2423_2.jpg',
+        './IMG-20261123-WA2423.jpg',
+      ],
+    };
+
+    // Estado central da aplicação
+    const appState = {
+      heroColor: 'white',
+      heroSide: 'front',
+      futureCategory: 'all',
+      tshirts: [
+        {
+          id: 'tshirt-white',
+          name: 'T-Shirt Oversized IM MACHADO — Branca',
+          color: 'white',
+          colorLabel: 'Branca',
+          side: 'front',
+          size: 'L',
+          qty: 1,
+          description:
+            'T-Shirt oversized branca sem pessoa: frente com monograma gótico "IM" no peito esquerdo e verso com "IM MACHADO" em arco gótico e "Machado" em cursivo por baixo.',
+        },
+        {
+          id: 'tshirt-black',
+          name: 'T-Shirt Oversized IM MACHADO — Preta',
+          color: 'black',
+          colorLabel: 'Preta',
+          side: 'front',
+          size: 'L',
+          qty: 1,
+          description:
+            'T-Shirt oversized preta sem pessoa: frente com monograma gótico branco "IM" no peito esquerdo e verso com "IM MACHADO" em arco branco e "Machado" em cursivo por baixo.',
+        },
+      ],
+      futureProducts: [
+        {
+          id: 'fut-casaco',
+          category: 'casaco',
+          categoryLabel: 'Casacos',
+          name: 'Casaco Hoodie IM MACHADO',
+          color: 'black',
+          size: 'L',
+          description: 'Casaco hoodie streetwear com capuz, cordão e assinatura IM MACHADO.',
+        },
+        {
+          id: 'fut-calcao',
+          category: 'calcao',
+          categoryLabel: 'Calções',
+          name: 'Calções Streetwear IM MACHADO',
+          color: 'grey',
+          size: 'L',
+          description: 'Calções estruturados em malha pesada com monograma IM e marca IM MACHADO.',
+        },
+        {
+          id: 'fut-chapeu',
+          category: 'chapeu',
+          categoryLabel: 'Chapéus',
+          name: 'Chapéu Snapback IM MACHADO',
+          color: 'white',
+          size: 'Único',
+          description: 'Chapéu aba reta com emblema gótico IM bordado na frente e lateral.',
+        },
+        {
+          id: 'fut-chinela',
+          category: 'chinela',
+          categoryLabel: 'Chinelas',
+          name: 'Chinelas Slide IM MACHADO',
+          color: 'black',
+          size: '42',
+          description: 'Chinelas slide anatómicas com faixa estampada IM MACHADO e palmilha IM.',
+        },
+      ],
+      cart: [],
+      quickView: {
+        open: false,
+        kind: null, // 'tshirt' | 'future'
+        itemId: null,
+        color: 'white',
+        side: 'front',
+        size: 'L',
+        qty: 1,
+      },
+    };
+
+    // =======================================================================
+    // UTILITÁRIOS DE COR E FALLBACKS DE IMAGENS LOCAIS
+    // =======================================================================
+
+    function getColorLabelPt(color) {
+      if (color === 'black') return 'Preto';
+      if (color === 'white') return 'Branco';
+      return 'Cinzento';
+    }
+
+    function getTShirtCandidates(color = 'white', side = 'front') {
+      if (color === 'white') {
+        return side === 'front' ? ASSET_PATHS.tshirtWhiteFront : ASSET_PATHS.tshirtWhiteBack;
+      }
+      return side === 'front' ? ASSET_PATHS.tshirtBlackFront : ASSET_PATHS.tshirtBlackBack;
+    }
+
+    // Vetor 3D de backup caso alguma foto local não esteja presente na pasta
+    function getTShirtFallbackSvgDataUri(color = 'white', side = 'front') {
+      const isWhite = color === 'white';
+      const fabric = isWhite ? '#f8fafc' : '#111113';
+      const shade = isWhite ? '#e2e8f0' : '#050506';
+      const stroke = isWhite ? '#cbd5e1' : '#27272a';
+      const ink = isWhite ? '#09090b' : '#ffffff';
+
+      const printMarkup =
+        side === 'front'
+          ? `
+            <text x="275" y="152" fill="${ink}" font-family="UnifrakturMaguntia, Georgia, serif" font-size="38" font-weight="bold">IM</text>
+            <text x="200" y="340" text-anchor="middle" fill="${ink}" fill-opacity="0.16" font-family="Cinzel, serif" font-size="13" letter-spacing="4">IM MACHADO</text>
+          `
+          : `
+            <path id="backArc" d="M 118 166 Q 200 132 282 166" fill="none" />
+            <text fill="${ink}" font-family="UnifrakturMaguntia, Georgia, serif" font-size="23" font-weight="bold" letter-spacing="1.5">
+              <textPath href="#backArc" startOffset="50%" text-anchor="middle">IM MACHADO</textPath>
+            </text>
+            <text x="200" y="182" text-anchor="middle" fill="${ink}" font-family="Great Vibes, cursive" font-size="22">Machado</text>
+          `;
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420">
+          <defs>
+            <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${fabric}" />
+              <stop offset="100%" stop-color="${shade}" />
+            </linearGradient>
+          </defs>
+          <ellipse cx="200" cy="396" rx="105" ry="12" fill="#09090b" fill-opacity="0.14" />
+          <path d="M148 54 L102 84 L48 162 L92 194 L126 144 L126 372 L274 372 L274 144 L308 194 L352 162 L298 84 L252 54 C234 72 166 72 148 54 Z"
+                fill="url(#shirtGrad)" stroke="${stroke}" stroke-width="3" stroke-linejoin="round" />
+          <path d="M148 54 C172 78 228 78 252 54" fill="none" stroke="${stroke}" stroke-width="3" />
+          ${printMarkup}
+        </svg>
+      `.trim();
+
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    function handleTShirtImgError(imgEl, color = 'white', side = 'front') {
+      const candidates = getTShirtCandidates(color, side);
+      const currentAttempt = parseInt(imgEl.dataset.attempt || '1', 10);
+      if (currentAttempt < candidates.length) {
+        imgEl.dataset.attempt = String(currentAttempt + 1);
+        imgEl.src = candidates[currentAttempt];
+      } else {
+        imgEl.onerror = null;
+        imgEl.src = getTShirtFallbackSvgDataUri(color, side);
+      }
+    }
+
+    // Gera ilustrações de estúdio 3D nítidas para Próximos Lançamentos (Preto, Branco e Cinzento)
+    function getFutureProductSvgDataUri(category, color) {
+      let bgTop = '#27272a';
+      let bgBottom = '#141416';
+      let garmentFill = '#18181b';
+      let garmentShade = '#09090b';
+      let garmentStroke = '#3f3f46';
+      let inkColor = '#ffffff';
+      let badgeText = 'PRETO';
+
+      if (color === 'white') {
+        bgTop = '#f4f4f5';
+        bgBottom = '#e4e4e7';
+        garmentFill = '#ffffff';
+        garmentShade = '#e4e4e7';
+        garmentStroke = '#a1a1aa';
+        inkColor = '#09090b';
+        badgeText = 'BRANCO';
+      } else if (color === 'grey') {
+        bgTop = '#3f3f46';
+        bgBottom = '#27272a';
+        garmentFill = '#9ca3af';
+        garmentShade = '#6b7280';
+        garmentStroke = '#d4d4d8';
+        inkColor = '#09090b';
+        badgeText = 'CINZENTO';
+      }
+
+      let pieceArtwork = '';
+
+      if (category === 'casaco') {
+        pieceArtwork = `
+          <ellipse cx="200" cy="368" rx="95" ry="11" fill="#000000" fill-opacity="0.22" />
+          <path d="M150 68 C164 40 236 40 250 68 L302 98 L352 184 L310 212 L276 154 L276 346 L124 346 L124 154 L90 212 L48 184 L98 98 Z"
+                fill="url(#pieceGrad)" stroke="${garmentStroke}" stroke-width="3" stroke-linejoin="round" />
+          <path d="M152 68 C176 92 224 92 248 68" fill="none" stroke="${garmentStroke}" stroke-width="3" />
+          <line x1="200" y1="88" x2="200" y2="346" stroke="${garmentStroke}" stroke-width="2" stroke-dasharray="4 4" />
+          <rect x="145" y="242" width="110" height="68" rx="12" fill="none" stroke="${garmentStroke}" stroke-width="2" />
+          <text x="200" y="156" text-anchor="middle" fill="${inkColor}" font-family="UnifrakturMaguntia, Georgia, serif" font-size="22" font-weight="bold">IM MACHADO</text>
+          <text x="200" y="182" text-anchor="middle" fill="${inkColor}" font-family="UnifrakturMaguntia, Georgia, serif" font-size="26" font-weight="bold">IM</text>
+        `;
+      } else if (category === 'calcao') {
+        pieceArtwork = `
+          <ellipse cx="200" cy="364" rx="92" ry="11" fill="#000000" fill-opacity="0.22" />
+          <path d="M104 92 L296 92 L316 334 L214 334 L200 196 L186 334 L84 334 Z"
+                fill="url(#pieceGrad)" stroke="${garmentStroke}" stroke-width="3" stroke-linejoin="round" />
+          <rect x="104" y="92" width="192" height="32" rx="6" fill="url(#pieceGrad)" stroke="${garmentStroke}" stroke-width="2.5" />
+          <path d="M188 124 L182 162 M212 124 L218 162" stroke="${inkColor}" stroke-width="3" stroke-linecap="round" />
+          <text x="136" y="274" text-anchor="middle" fill="${inkColor}" font-family="UnifrakturMaguntia, Georgia, serif" font-size="28" font-weight="bold">IM</text>
+          <text x="264" y="254" text-anchor="middle" fill="${inkColor}" font-family="Cinzel, serif" font-size="11" font-weight="bold" transform="rotate(90 264 254)">IM MACHADO</text>
+        `;
+      } else if (category === 'chapeu') {
+        pieceArtwork = `
+          <ellipse cx="200" cy="340" rx="115" ry="13" fill="#000000" fill-opacity="0.22" />
+          <path d="M104 236 C104 126 296 126 296 236 Z" fill="url(#pieceGrad)" stroke="${garmentStroke}" stroke-width="3" />
+          <path d="M72 246 C132 222 268 222 328 246 C332 262 314 274 282 270 C230 262 170 262 118 270 C86 274 68 262 72 246 Z"
+                fill="url(#pieceGrad)" stroke="${garmentStroke}" stroke-width="3" />
+          <text x="200" y="198" text-anchor="middle" fill="${inkColor}" font-family="UnifrakturMaguntia, Georgia, serif" font-size="42" font-weight="bold">IM</text>
+          <text x="200" y="222" text-anchor="middle" fill="${inkColor}" font-family="Cinzel, serif" font-size="11" font-weight="bold" letter-spacing="2">IM MACHADO</text>
+        `;
+      } else {
+        pieceArtwork = `
+          <ellipse cx="200" cy="358" rx="108" ry="12" fill="#000000" fill-opacity="0.22" />
+          <rect x="86" y="236" width="228" height="32" rx="16" fill="url(#pieceGrad)" stroke="${garmentStroke}" stroke-width="3" />
+          <path d="M126 236 C126 142 274 142 274 236 Z" fill="url(#pieceGrad)" stroke="${garmentStroke}" stroke-width="3" />
+          <text x="200" y="204" text-anchor="middle" fill="${inkColor}" font-family="UnifrakturMaguntia, Georgia, serif" font-size="22" font-weight="bold">IM MACHADO</text>
+          <text x="200" y="257" text-anchor="middle" fill="${inkColor}" font-family="Cinzel, serif" font-size="11" font-weight="bold" letter-spacing="3">IM • LUANDA</text>
+        `;
+      }
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+          <defs>
+            <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="${bgTop}" />
+              <stop offset="100%" stop-color="${bgBottom}" />
+            </linearGradient>
+            <linearGradient id="pieceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="${garmentFill}" />
+              <stop offset="100%" stop-color="${garmentShade}" />
+            </linearGradient>
+          </defs>
+          <rect width="400" height="400" rx="20" fill="url(#bgGrad)" />
+          <text x="22" y="34" fill="${inkColor}" fill-opacity="0.65" font-family="Inter, sans-serif" font-size="11" font-weight="800" letter-spacing="2">${badgeText}</text>
+          ${pieceArtwork}
+        </svg>
+      `.trim();
+
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    // =======================================================================
+    // INICIALIZAÇÃO DO LOGOTIPO NO HEAD E HEADER
+    // =======================================================================
+
+    function initBrandLogo() {
+      const logoImg = document.getElementById('header-brand-logo');
+      const faviconEl = document.getElementById('head-favicon');
+      if (!logoImg) return;
+
+      let idx = 0;
+      function tryLogo() {
+        if (idx < ASSET_PATHS.logo.length) {
+          const path = ASSET_PATHS.logo[idx++];
+          logoImg.src = path;
+          if (faviconEl) faviconEl.href = path;
+        } else {
+          logoImg.onerror = null;
+          const fallbackLogoSvg =
+            'data:image/svg+xml;charset=utf-8,' +
+            encodeURIComponent(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" rx="20" fill="#ffffff"/><text x="60" y="66" text-anchor="middle" fill="#09090b" font-family="UnifrakturMaguntia, serif" font-size="52" font-weight="bold">IM</text><text x="60" y="92" text-anchor="middle" fill="#09090b" font-family="Cinzel, serif" font-size="12" font-weight="bold">IM MACHADO</text></svg>`
+            );
+          logoImg.src = fallbackLogoSvg;
+          if (faviconEl) faviconEl.href = fallbackLogoSvg;
+        }
+      }
+
+      logoImg.onerror = tryLogo;
+      tryLogo();
+    }
+
+    // =======================================================================
+    // CONTROLES 3D (MOUSE & TOQUE) + HERO
+    // =======================================================================
+
+    function tiltGarment(event, elementId) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      el.classList.remove('garment-float');
+      el.style.transform = `rotateY(${x * 32}deg) rotateX(${-y * 24}deg) scale(1.03)`;
+    }
+
+    function touchTiltGarment(event, elementId) {
+      if (!event.touches || !event.touches.length) return;
+      const touch = event.touches[0];
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const x = (touch.clientX - rect.left) / rect.width - 0.5;
+      const y = (touch.clientY - rect.top) / rect.height - 0.5;
+      el.classList.remove('garment-float');
+      el.style.transform = `rotateY(${x * 28}deg) rotateX(${-y * 20}deg) scale(1.02)`;
+    }
+
+    function resetGarmentTilt(elementId) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      el.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+      el.classList.add('garment-float');
+    }
+
+    function updateHeroViewer(color = null, side = null) {
+      if (color) appState.heroColor = color;
+      if (side) appState.heroSide = side;
+
+      const isWhite = appState.heroColor === 'white';
+      const isFront = appState.heroSide === 'front';
+
+      const btnWhite = document.getElementById('hero-btn-white');
+      const btnBlack = document.getElementById('hero-btn-black');
+      const btnFront = document.getElementById('hero-btn-front');
+      const btnBack = document.getElementById('hero-btn-back');
+      const statusLabel = document.getElementById('hero-status-label');
+      const imgEl = document.getElementById('hero-garment-img');
+
+      if (btnWhite && btnBlack) {
+        btnWhite.className = isWhite
+          ? 'px-3 py-1.5 rounded-lg text-xs font-extrabold bg-white text-black transition-all'
+          : 'px-3 py-1.5 rounded-lg text-xs font-bold text-brand-silver hover:text-white transition-all';
+        btnBlack.className = !isWhite
+          ? 'px-3 py-1.5 rounded-lg text-xs font-extrabold bg-white text-black transition-all'
+          : 'px-3 py-1.5 rounded-lg text-xs font-bold text-brand-silver hover:text-white transition-all';
+      }
+
+      if (btnFront && btnBack) {
+        btnFront.className = isFront
+          ? 'flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-white text-black text-xs font-extrabold uppercase tracking-wider transition-all'
+          : 'flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-brand-black text-brand-silver hover:text-white border border-brand-border text-xs font-bold uppercase tracking-wider transition-all';
+        btnBack.className = !isFront
+          ? 'flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-white text-black text-xs font-extrabold uppercase tracking-wider transition-all'
+          : 'flex-1 sm:flex-initial px-4 py-2.5 rounded-xl bg-brand-black text-brand-silver hover:text-white border border-brand-border text-xs font-bold uppercase tracking-wider transition-all';
+      }
+
+      if (statusLabel) {
+        statusLabel.textContent = `T-Shirt ${isWhite ? 'Branca' : 'Preta'} • ${isFront ? 'Frente' : 'Verso'}`;
+      }
+
+      if (imgEl) {
+        imgEl.dataset.attempt = '1';
+        imgEl.onerror = function () {
+          handleTShirtImgError(this, appState.heroColor, appState.heroSide);
+        };
+        imgEl.src = getTShirtCandidates(appState.heroColor, appState.heroSide)[0];
+      }
+    }
+
+    function addHeroToCart() {
+      const isWhite = appState.heroColor === 'white';
+      const isFront = appState.heroSide === 'front';
+      addToCart({
+        id: `hero-${appState.heroColor}-${appState.heroSide}-L`,
+        name: `T-Shirt Oversized IM MACHADO — ${isWhite ? 'Branca' : 'Preta'} (${isFront ? 'Frente' : 'Verso'})`,
+        colorLabel: isWhite ? 'Branca' : 'Preta',
+        size: 'L',
+        qty: 1,
+        image: getTShirtFallbackSvgDataUri(appState.heroColor, appState.heroSide),
+      });
+    }
+
+    // =======================================================================
+    // RENDERIZAÇÃO: T-SHIRTS DISPONÍVEIS AGORA
+    // =======================================================================
+
+    function renderAvailableTShirts() {
+      const grid = document.getElementById('available-tshirts-grid');
+      if (!grid) return;
+
+      const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
+
+      grid.innerHTML = appState.tshirts
+        .map((item) => {
+          const isFront = item.side === 'front';
+          const initialSrc = getTShirtCandidates(item.color, item.side)[0];
+
+          return `
+            <article class="rounded-3xl bg-brand-card border border-brand-border p-5 sm:p-7 flex flex-col justify-between gap-6 shadow-xl">
+              <div>
+                <!-- Topo do Card -->
+                <div class="flex items-start justify-between gap-3 mb-4">
+                  <div>
+                    <span class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-brand-muted">
+                      Pronta Entrega • ${item.colorLabel}
+                    </span>
+                    <h3 class="text-xl sm:text-2xl font-black text-white mt-1">
+                      ${item.name}
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    onclick="openQuickView('tshirt', '${item.id}')"
+                    class="px-3 py-2 rounded-xl bg-brand-black hover:bg-zinc-800 border border-brand-border text-xs font-bold text-brand-silver hover:text-white flex items-center gap-1.5 shrink-0"
+                  >
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                    <span>Ampliar</span>
+                  </button>
+                </div>
+
+                <!-- Palco 3D Sem Pessoa -->
+                <div
+                  class="stage-3d relative h-[320px] sm:h-[360px] rounded-2xl bg-white border-2 border-brand-silver flex items-center justify-center p-4 cursor-grab active:cursor-grabbing select-none overflow-hidden"
+                  onmousemove="tiltGarment(event, 'card-3d-${item.id}')"
+                  onmouseleave="resetGarmentTilt('card-3d-${item.id}')"
+                  ontouchmove="touchTiltGarment(event, 'card-3d-${item.id}')"
+                  ontouchend="resetGarmentTilt('card-3d-${item.id}')"
+                >
+                  <div class="absolute bottom-3 w-44 h-4 rounded-full bg-black/15 blur-md pointer-events-none"></div>
+                  <div id="card-3d-${item.id}" class="garment-3d garment-float w-full max-w-[240px] sm:max-w-[275px] flex items-center justify-center">
+                    <img
+                      src="${initialSrc}"
+                      data-attempt="1"
+                      onerror="handleTShirtImgError(this, '${item.color}', '${item.side}')"
+                      alt="${item.name} — ${isFront ? 'Frente' : 'Verso'}"
+                      class="w-full max-h-[300px] object-contain pointer-events-none select-none rounded-lg"
+                    />
+                  </div>
+                </div>
+
+                <!-- Alternância Frente / Verso -->
+                <div class="mt-4 flex items-center justify-between gap-2">
+                  <span class="text-xs font-bold text-brand-silver">
+                    Vista atual: <strong class="text-white">${isFront ? 'Frente (IM)' : 'Verso (IM MACHADO)'}</strong>
+                  </span>
+                  <div class="flex items-center gap-1.5 bg-brand-black p-1 rounded-xl border border-brand-border">
+                    <button
+                      type="button"
+                      onclick="setTShirtSide('${item.id}', 'front')"
+                      class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold transition-all ${
+                        isFront ? 'bg-white text-black' : 'text-brand-silver hover:text-white'
+                      }"
+                    >
+                      Frente
+                    </button>
+                    <button
+                      type="button"
+                      onclick="setTShirtSide('${item.id}', 'back')"
+                      class="px-3.5 py-1.5 rounded-lg text-xs font-extrabold transition-all ${
+                        !isFront ? 'bg-white text-black' : 'text-brand-silver hover:text-white'
+                      }"
+                    >
+                      Verso
+                    </button>
+                  </div>
+                </div>
+
+                <p class="text-xs sm:text-sm text-brand-silver mt-4 leading-relaxed">
+                  ${item.description}
+                </p>
+              </div>
+
+              <!-- Tamanho, Quantidade e Botões de Compra -->
+              <div class="space-y-4 pt-4 border-t border-brand-border">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div class="flex items-center gap-1.5">
+                    ${sizes
+                      .map(
+                        (sz) => `
+                        <button
+                          type="button"
+                          onclick="setTShirtSize('${item.id}', '${sz}')"
+                          class="w-9 h-9 rounded-lg text-xs font-extrabold transition-all ${
+                            item.size === sz
+                              ? 'bg-white text-black'
+                              : 'bg-brand-black text-brand-silver hover:text-white border border-brand-border'
+                          }"
+                        >
+                          ${sz}
+                        </button>
+                      `
+                      )
+                      .join('')}
+                  </div>
+
+                  <div class="flex items-center gap-2 bg-brand-black px-2.5 py-1.5 rounded-xl border border-brand-border">
+                    <button
+                      type="button"
+                      onclick="setTShirtQty('${item.id}', -1)"
+                      aria-label="Diminuir quantidade"
+                      class="w-7 h-7 rounded-lg bg-brand-card text-white font-bold flex items-center justify-center hover:bg-zinc-700"
+                    >
+                      -
+                    </button>
+                    <span class="text-xs font-black w-5 text-center">${item.qty}</span>
+                    <button
+                      type="button"
+                      onclick="setTShirtQty('${item.id}', 1)"
+                      aria-label="Aumentar quantidade"
+                      class="w-7 h-7 rounded-lg bg-brand-card text-white font-bold flex items-center justify-center hover:bg-zinc-700"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onclick="addTShirtToCart('${item.id}')"
+                    class="py-3.5 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-brand-border text-white text-xs font-extrabold flex items-center justify-center gap-2 transition-all active:scale-95"
+                  >
+                    <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                    <span>Adicionar à Sacola</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="buyTShirtWhatsApp('${item.id}')"
+                    class="py-3.5 px-4 rounded-xl bg-white hover:bg-brand-silver text-black text-xs font-black flex items-center justify-center gap-2 transition-all active:scale-95"
+                  >
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>Comprar no WhatsApp</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+
+      lucide.createIcons();
+    }
+
+    function setTShirtSide(id, side) {
+      const item = appState.tshirts.find((t) => t.id === id);
+      if (!item) return;
+      item.side = side;
+      renderAvailableTShirts();
+    }
+
+    function setTShirtSize(id, size) {
+      const item = appState.tshirts.find((t) => t.id === id);
+      if (!item) return;
+      item.size = size;
+      renderAvailableTShirts();
+    }
+
+    function setTShirtQty(id, delta) {
+      const item = appState.tshirts.find((t) => t.id === id);
+      if (!item) return;
+      item.qty = Math.max(1, item.qty + delta);
+      renderAvailableTShirts();
+    }
+
+    function addTShirtToCart(id) {
+      const item = appState.tshirts.find((t) => t.id === id);
+      if (!item) return;
+      addToCart({
+        id: `${item.id}-${item.side}-${item.size}`,
+        name: `${item.name} (${item.side === 'front' ? 'Frente' : 'Verso'})`,
+        colorLabel: item.colorLabel,
+        size: item.size,
+        qty: item.qty,
+        image: getTShirtFallbackSvgDataUri(item.color, item.side),
+      });
+    }
+
+    function buyTShirtWhatsApp(id) {
+      const item = appState.tshirts.find((t) => t.id === id);
+      if (!item) return;
+      const sidePt = item.side === 'front' ? 'Frente' : 'Verso';
+      const msg =
+        `Olá IM MACHADO! Quero encomendar:\n` +
+        `• Produto: ${item.name}\n` +
+        `• Cor: ${item.colorLabel}\n` +
+        `• Vista: ${sidePt}\n` +
+        `• Tamanho: ${item.size}\n` +
+        `• Quantidade: ${item.qty}`;
+      openWhatsApp(msg);
+    }
+
+    // =======================================================================
+    // RENDERIZAÇÃO: PRÓXIMOS LANÇAMENTOS (CASACOS, CALÇÕES, CHAPÉUS, CHINELAS)
+    // =======================================================================
+
+    function setFutureCategory(category) {
+      appState.futureCategory = category;
+      document.querySelectorAll('.cat-filter-btn').forEach((btn) => {
+        const active = btn.dataset.cat === category;
+        btn.className = active
+          ? 'cat-filter-btn px-4 py-2 rounded-xl text-xs font-extrabold bg-white text-black transition-all'
+          : 'cat-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-card text-brand-silver hover:text-white border border-brand-border transition-all';
+      });
+      renderFutureProducts();
+    }
+
+    function renderFutureProducts() {
+      const grid = document.getElementById('future-products-grid');
+      if (!grid) return;
+
+      const filtered =
+        appState.futureCategory === 'all'
+          ? appState.futureProducts
+          : appState.futureProducts.filter((p) => p.category === appState.futureCategory);
+
+      grid.innerHTML = filtered
+        .map((prod) => {
+          const imgSrc = getFutureProductSvgDataUri(prod.category, prod.color);
+          const colorPt = getColorLabelPt(prod.color);
+
+          return `
+            <article class="rounded-3xl bg-brand-card border border-brand-border p-4 sm:p-5 flex flex-col justify-between gap-4 hover:border-zinc-600 transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="px-2.5 py-1 rounded-full bg-brand-black border border-brand-border text-[10px] font-extrabold uppercase tracking-wider text-brand-silver">
+                    ${prod.categoryLabel} • Em Breve
+                  </span>
+                  <button
+                    type="button"
+                    onclick="openQuickView('future', '${prod.id}')"
+                    class="p-2 rounded-xl bg-brand-black hover:bg-zinc-800 border border-brand-border text-brand-silver hover:text-white"
+                    title="Ampliar peça"
+                  >
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+
+                <!-- Foto / Ilustração de Estúdio 3D com Marca IM MACHADO -->
+                <div
+                  onclick="openQuickView('future', '${prod.id}')"
+                  class="cursor-pointer rounded-2xl overflow-hidden border border-brand-border bg-brand-black aspect-square mb-4"
+                >
+                  <img
+                    src="${imgSrc}"
+                    alt="${prod.name} — ${colorPt}"
+                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+
+                <h3 class="text-base sm:text-lg font-extrabold text-white">
+                  ${prod.name}
+                </h3>
+                <p class="text-xs text-brand-silver mt-1 leading-relaxed">
+                  ${prod.description}
+                </p>
+
+                <!-- Seletor de Cor: Preto, Branco e Cinzento -->
+                <div class="mt-4">
+                  <p class="text-[11px] font-bold text-brand-silver mb-2">
+                    Cor: <span class="text-white">${colorPt}</span>
+                  </p>
+                  <div class="grid grid-cols-3 gap-1.5 bg-brand-black p-1 rounded-xl border border-brand-border">
+                    <button
+                      type="button"
+                      onclick="setFutureProductColor('${prod.id}', 'black')"
+                      class="py-1.5 rounded-lg text-[11px] font-extrabold transition-all ${
+                        prod.color === 'black' ? 'bg-white text-black' : 'text-brand-silver hover:text-white'
+                      }"
+                    >
+                      Preto
+                    </button>
+                    <button
+                      type="button"
+                      onclick="setFutureProductColor('${prod.id}', 'white')"
+                      class="py-1.5 rounded-lg text-[11px] font-extrabold transition-all ${
+                        prod.color === 'white' ? 'bg-white text-black' : 'text-brand-silver hover:text-white'
+                      }"
+                    >
+                      Branco
+                    </button>
+                    <button
+                      type="button"
+                      onclick="setFutureProductColor('${prod.id}', 'grey')"
+                      class="py-1.5 rounded-lg text-[11px] font-extrabold transition-all ${
+                        prod.color === 'grey' ? 'bg-white text-black' : 'text-brand-silver hover:text-white'
+                      }"
+                    >
+                      Cinzento
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 pt-2">
+                <button
+                  type="button"
+                  onclick="openQuickView('future', '${prod.id}')"
+                  class="py-3 px-3 rounded-xl bg-brand-black hover:bg-zinc-800 border border-brand-border text-white text-xs font-bold transition-all"
+                >
+                  Ampliar
+                </button>
+                <button
+                  type="button"
+                  onclick="reserveFutureWhatsApp('${prod.id}')"
+                  class="py-3 px-3 rounded-xl bg-white hover:bg-brand-silver text-black text-xs font-black flex items-center justify-center gap-1.5 transition-all active:scale-95"
+                >
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                  <span>Reservar</span>
+                </button>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+
+      lucide.createIcons();
+    }
+
+    function setFutureProductColor(id, color) {
+      const prod = appState.futureProducts.find((p) => p.id === id);
+      if (!prod) return;
+      prod.color = color;
+      renderFutureProducts();
+    }
+
+    function reserveFutureWhatsApp(id) {
+      const prod = appState.futureProducts.find((p) => p.id === id);
+      if (!prod) return;
+      const colorPt = getColorLabelPt(prod.color);
+      const msg =
+        `Olá IM MACHADO! Quero reservar este lançamento futuro:\n` +
+        `• Produto: ${prod.name}\n` +
+        `• Categoria: ${prod.categoryLabel}\n` +
+        `• Cor: ${colorPt}\n` +
+        `• Tamanho/Ref.: ${prod.size}`;
+      openWhatsApp(msg);
+    }
+
+    // =======================================================================
+    // MODAL DE VISUALIZAÇÃO AMPLIADA (QUICK VIEW)
+    // =======================================================================
+
+    function openQuickView(kind, itemId) {
+      const modal = document.getElementById('quick-view-modal');
+      if (!modal) return;
+
+      if (kind === 'tshirt') {
+        const item = appState.tshirts.find((t) => t.id === itemId);
+        if (!item) return;
+        appState.quickView = {
+          open: true,
+          kind: 'tshirt',
+          itemId: item.id,
+          color: item.color,
+          side: item.side,
+          size: item.size,
+          qty: item.qty,
+        };
+      } else {
+        const prod = appState.futureProducts.find((p) => p.id === itemId);
+        if (!prod) return;
+        appState.quickView = {
+          open: true,
+          kind: 'future',
+          itemId: prod.id,
+          color: prod.color,
+          side: 'front',
+          size: prod.size,
+          qty: 1,
+        };
+      }
+
+      renderQuickViewModal();
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeQuickViewModal() {
+      const modal = document.getElementById('quick-view-modal');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      appState.quickView.open = false;
+      document.body.style.overflow = '';
+    }
+
+    function updateQuickView(patch) {
+      Object.assign(appState.quickView, patch);
+      renderQuickViewModal();
+    }
+
+    function renderQuickViewModal() {
+      const panel = document.getElementById('quick-view-panel');
+      const qv = appState.quickView;
+      if (!panel || !qv.open) return;
+
+      if (qv.kind === 'tshirt') {
+        const baseItem = appState.tshirts.find((t) => t.id === qv.itemId) || appState.tshirts[0];
+        const colorPt = qv.color === 'white' ? 'Branca' : 'Preta';
+        const sidePt = qv.side === 'front' ? 'Frente' : 'Verso';
+        const imgSrc = getTShirtCandidates(qv.color, qv.side)[0];
+        const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
+
+        panel.innerHTML = `
+          <div class="flex items-center justify-between gap-4 pb-4 border-b border-brand-border">
+            <div>
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-brand-muted">Visualização 3D Ampliada</span>
+              <h3 class="text-xl sm:text-2xl font-black text-white mt-0.5">
+                T-Shirt Oversized IM MACHADO — ${colorPt}
+              </h3>
+            </div>
+            <button
+              type="button"
+              onclick="closeQuickViewModal()"
+              class="p-2.5 rounded-xl bg-brand-black text-brand-silver hover:text-white border border-brand-border"
+            >
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 items-center">
+            <div
+              class="stage-3d h-[300px] sm:h-[340px] rounded-2xl bg-white border-2 border-brand-silver flex items-center justify-center p-4 overflow-hidden"
+              onmousemove="tiltGarment(event, 'qv-3d-garment')"
+              onmouseleave="resetGarmentTilt('qv-3d-garment')"
+            >
+              <div id="qv-3d-garment" class="garment-3d garment-float max-w-[240px]">
+                <img
+                  src="${imgSrc}"
+                  data-attempt="1"
+                  onerror="handleTShirtImgError(this, '${qv.color}', '${qv.side}')"
+                  alt="${baseItem.name} — ${sidePt}"
+                  class="w-full max-h-[290px] object-contain rounded-lg"
+                />
+              </div>
+            </div>
+
+            <div class="space-y-5">
+              <p class="text-xs sm:text-sm text-brand-silver leading-relaxed">${baseItem.description}</p>
+
+              <div>
+                <p class="text-xs font-bold text-brand-silver mb-2">Cor</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onclick="updateQuickView({ color: 'white' })"
+                    class="py-2.5 rounded-xl text-xs font-extrabold ${
+                      qv.color === 'white'
+                        ? 'bg-white text-black'
+                        : 'bg-brand-black text-brand-silver border border-brand-border'
+                    }"
+                  >
+                    Branca
+                  </button>
+                  <button
+                    type="button"
+                    onclick="updateQuickView({ color: 'black' })"
+                    class="py-2.5 rounded-xl text-xs font-extrabold ${
+                      qv.color === 'black'
+                        ? 'bg-white text-black'
+                        : 'bg-brand-black text-brand-silver border border-brand-border'
+                    }"
+                  >
+                    Preta
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-xs font-bold text-brand-silver mb-2">Lado</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onclick="updateQuickView({ side: 'front' })"
+                    class="py-2.5 rounded-xl text-xs font-extrabold ${
+                      qv.side === 'front'
+                        ? 'bg-white text-black'
+                        : 'bg-brand-black text-brand-silver border border-brand-border'
+                    }"
+                  >
+                    Frente
+                  </button>
+                  <button
+                    type="button"
+                    onclick="updateQuickView({ side: 'back' })"
+                    class="py-2.5 rounded-xl text-xs font-extrabold ${
+                      qv.side === 'back'
+                        ? 'bg-white text-black'
+                        : 'bg-brand-black text-brand-silver border border-brand-border'
+                    }"
+                  >
+                    Verso
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-xs font-bold text-brand-silver mb-2">Tamanho</p>
+                <div class="flex flex-wrap gap-2">
+                  ${sizes
+                    .map(
+                      (sz) => `
+                      <button
+                        type="button"
+                        onclick="updateQuickView({ size: '${sz}' })"
+                        class="w-10 h-10 rounded-xl text-xs font-extrabold ${
+                          qv.size === sz
+                            ? 'bg-white text-black'
+                            : 'bg-brand-black text-brand-silver border border-brand-border'
+                        }"
+                      >
+                        ${sz}
+                      </button>
+                    `
+                    )
+                    .join('')}
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <button
+                  type="button"
+                  onclick="addToCart({
+                    id: 'qv-tshirt-${qv.color}-${qv.side}-${qv.size}',
+                    name: 'T-Shirt Oversized IM MACHADO — ${colorPt} (${sidePt})',
+                    colorLabel: '${colorPt}',
+                    size: '${qv.size}',
+                    qty: ${qv.qty},
+                    image: getTShirtFallbackSvgDataUri('${qv.color}', '${qv.side}')
+                  }); closeQuickViewModal();"
+                  class="py-3.5 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-brand-border text-white text-xs font-extrabold"
+                >
+                  Adicionar à Sacola
+                </button>
+                <button
+                  type="button"
+                  onclick="openWhatsApp('Olá IM MACHADO! Quero encomendar:\\n• Produto: T-Shirt Oversized IM MACHADO — ${colorPt} (${sidePt})\\n• Tamanho: ${qv.size}\\n• Quantidade: ${qv.qty}');"
+                  class="py-3.5 px-4 rounded-xl bg-white hover:bg-brand-silver text-black text-xs font-black flex items-center justify-center gap-2"
+                >
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  <span>Pedir no WhatsApp</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        const prod = appState.futureProducts.find((p) => p.id === qv.itemId) || appState.futureProducts[0];
+        const colorPt = getColorLabelPt(qv.color);
+        const imgSrc = getFutureProductSvgDataUri(prod.category, qv.color);
+
+        panel.innerHTML = `
+          <div class="flex items-center justify-between gap-4 pb-4 border-b border-brand-border">
+            <div>
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-brand-muted">Próximo Lançamento • ${prod.categoryLabel}</span>
+              <h3 class="text-xl sm:text-2xl font-black text-white mt-0.5">${prod.name}</h3>
+            </div>
+            <button
+              type="button"
+              onclick="closeQuickViewModal()"
+              class="p-2.5 rounded-xl bg-brand-black text-brand-silver hover:text-white border border-brand-border"
+            >
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 items-center">
+            <div class="rounded-2xl overflow-hidden border border-brand-border bg-brand-black">
+              <img src="${imgSrc}" alt="${prod.name} — ${colorPt}" class="w-full aspect-square object-cover" />
+            </div>
+
+            <div class="space-y-5">
+              <p class="text-xs sm:text-sm text-brand-silver leading-relaxed">${prod.description}</p>
+
+              <div>
+                <p class="text-xs font-bold text-brand-silver mb-2">Cor: <span class="text-white">${colorPt}</span></p>
+                <div class="grid grid-cols-3 gap-2">
+                  <button
+                    type="button"
+                    onclick="updateQuickView({ color: 'black' })"
+                    class="py-2.5 rounded-xl text-xs font-extrabold ${
+                      qv.color === 'black'
+                        ? 'bg-white text-black'
+                        : 'bg-brand-black text-brand-silver border border-brand-border'
+                    }"
+                  >
+                    Preto
+                  </button>
+                  <button
+                    type="button"
+                    onclick="updateQuickView({ color: 'white' })"
+                    class="py-2.5 rounded-xl text-xs font-extrabold ${
+                      qv.color === 'white'
+                        ? 'bg-white text-black'
+                        : 'bg-brand-black text-brand-silver border border-brand-border'
+                    }"
+                  >
+                    Branco
+                  </button>
+                  <button
+                    type="button"
+                    onclick="updateQuickView({ color: 'grey' })"
+                    class="py-2.5 rounded-xl text-xs font-extrabold ${
+                      qv.color === 'grey'
+                        ? 'bg-white text-black'
+                        : 'bg-brand-black text-brand-silver border border-brand-border'
+                    }"
+                  >
+                    Cinzento
+                  </button>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onclick="openWhatsApp('Olá IM MACHADO! Quero reservar este lançamento futuro:\\n• Produto: ${prod.name}\\n• Cor: ${colorPt}\\n• Tamanho/Ref.: ${prod.size}');"
+                class="w-full py-4 px-5 rounded-2xl bg-white hover:bg-brand-silver text-black text-xs sm:text-sm font-black flex items-center justify-center gap-2"
+              >
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Reservar no WhatsApp (+244 925 105 867)</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      lucide.createIcons();
+    }
+
+    // =======================================================================
+    // GAVETA DA SACOLA (CARRINHO)
+    // =======================================================================
+
+    function toggleCartDrawer(forceOpen = null) {
+      const drawer = document.getElementById('cart-drawer');
+      if (!drawer) return;
+      const shouldOpen = forceOpen !== null ? forceOpen : drawer.classList.contains('hidden');
+      if (shouldOpen) {
+        drawer.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        drawer.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function addToCart(newItem) {
+      const existing = appState.cart.find((c) => c.id === newItem.id);
+      if (existing) {
+        existing.qty += newItem.qty;
+      } else {
+        appState.cart.push({ ...newItem });
+      }
+      renderCart();
+      showToast(`${newItem.name} adicionado à sacola.`);
+    }
+
+    function updateCartItemQty(id, delta) {
+      const idx = appState.cart.findIndex((c) => c.id === id);
+      if (idx === -1) return;
+      appState.cart[idx].qty += delta;
+      if (appState.cart[idx].qty <= 0) {
+        appState.cart.splice(idx, 1);
+      }
+      renderCart();
+    }
+
+    function removeCartItem(id) {
+      appState.cart = appState.cart.filter((c) => c.id !== id);
+      renderCart();
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cart-items-list');
+      const badge = document.getElementById('cart-count-badge');
+      const totalEl = document.getElementById('cart-drawer-total');
+
+      const totalQty = appState.cart.reduce((acc, item) => acc + item.qty, 0);
+      if (badge) badge.textContent = String(totalQty);
+      if (totalEl) totalEl.textContent = `${totalQty} ${totalQty === 1 ? 'peça' : 'peças'}`;
+
+      if (!list) return;
+
+      if (appState.cart.length === 0) {
+        list.innerHTML = `
+          <div class="text-center py-16 space-y-3">
+            <i data-lucide="shopping-bag" class="w-10 h-10 text-brand-muted mx-auto"></i>
+            <p class="text-sm font-bold text-white">A sua sacola está vazia</p>
+            <p class="text-xs text-brand-muted">Escolha uma T-Shirt Branca ou Preta para começar.</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      list.innerHTML = appState.cart
+        .map(
+          (item) => `
+          <div class="rounded-2xl bg-brand-black border border-brand-border p-3.5 flex items-center gap-3.5">
+            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-xl object-cover bg-white shrink-0" />
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-extrabold text-white truncate">${item.name}</p>
+              <p class="text-[11px] text-brand-silver mt-0.5">Cor: ${item.colorLabel} • Tam: ${item.size}</p>
+              <div class="flex items-center gap-2 mt-2">
+                <button
+                  type="button"
+                  onclick="updateCartItemQty('${item.id}', -1)"
+                  class="w-6 h-6 rounded-md bg-brand-card text-white text-xs font-bold border border-brand-border"
+                >-</button>
+                <span class="text-xs font-black">${item.qty}</span>
+                <button
+                  type="button"
+                  onclick="updateCartItemQty('${item.id}', 1)"
+                  class="w-6 h-6 rounded-md bg-brand-card text-white text-xs font-bold border border-brand-border"
+                >+</button>
+                <button
+                  type="button"
+                  onclick="removeCartItem('${item.id}')"
+                  class="ml-auto text-[11px] text-brand-muted hover:text-white underline"
+                >Remover</button>
+              </div>
+            </div>
+          </div>
+        `
+        )
+        .join('');
+
+      lucide.createIcons();
+    }
+
+    function checkoutCartWhatsApp() {
+      if (appState.cart.length === 0) {
+        openWhatsApp('Olá IM MACHADO! Gostaria de ver as opções disponíveis.');
+        return;
+      }
+      const lines = appState.cart.map(
+        (item, index) =>
+          `${index + 1}. ${item.name} | Cor: ${item.colorLabel} | Tam: ${item.size} | Qtd: ${item.qty}`
+      );
+      const msg = `Olá IM MACHADO! Segue o meu pedido:\n\n${lines.join('\n')}`;
+      openWhatsApp(msg);
+    }
+
+    // =======================================================================
+    // WHATSAPP (SOMENTE POR CLIQUE DO USUÁRIO) & NAVEGAÇÃO
+    // =======================================================================
+
+    function openWhatsApp(customMessage) {
+      const encoded = encodeURIComponent(customMessage || 'Olá IM MACHADO!');
+      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encoded}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-nav');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    function showToast(message) {
+      const box = document.getElementById('toast-box');
+      if (!box) return;
+      const el = document.createElement('div');
+      el.className =
+        'toast-anim px-4 py-3 rounded-xl bg-white text-black text-xs font-extrabold shadow-xl border border-brand-silver';
+      el.textContent = message;
+      box.appendChild(el);
+      setTimeout(() => {
+        el.remove();
+      }, 2600);
+    }
+
+    // =======================================================================
+    // CARREGADOR LOCAL VIA FILEREADER PARA TESTAR FOTOS DO COMPUTADOR
+    // =======================================================================
+
+    function handleLocalFilesUpload(event) {
+      const files = Array.from(event.target.files || []);
+      const previewContainer = document.getElementById('local-uploaded-preview');
+      if (!files.length || !previewContainer) return;
+
+      previewContainer.innerHTML = '';
+      previewContainer.classList.remove('hidden');
+
+      files.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const dataUrl = e.target.result;
+          const lower = file.name.toLowerCase();
+
+          if (lower.includes('0007')) {
+            const logoImg = document.getElementById('header-brand-logo');
+            if (logoImg) logoImg.src = dataUrl;
+          } else if (lower.includes('7356')) {
+            ASSET_PATHS.tshirtWhiteFront.unshift(dataUrl);
+            if (appState.heroColor === 'white' && appState.heroSide === 'front') {
+              document.getElementById('hero-garment-img').src = dataUrl;
+            }
+          } else if (lower.includes('2603')) {
+            ASSET_PATHS.tshirtWhiteBack.unshift(dataUrl);
+            if (appState.heroColor === 'white' && appState.heroSide === 'back') {
+              document.getElementById('hero-garment-img').src = dataUrl;
+            }
+          } else if (lower.includes('2504')) {
+            ASSET_PATHS.tshirtBlackFront.unshift(dataUrl);
+            if (appState.heroColor === 'black' && appState.heroSide === 'front') {
+              document.getElementById('hero-garment-img').src = dataUrl;
+            }
+          } else if (lower.includes('2423')) {
+            ASSET_PATHS.tshirtBlackBack.unshift(dataUrl);
+            if (appState.heroColor === 'black' && appState.heroSide === 'back') {
+              document.getElementById('hero-garment-img').src = dataUrl;
+            }
+          }
+
+          renderAvailableTShirts();
+
+          const card = document.createElement('div');
+          card.className = 'rounded-xl bg-brand-black border border-brand-border p-2';
+          card.innerHTML = `
+            <img src="${dataUrl}" alt="${file.name}" class="w-full h-24 object-contain rounded-lg bg-white" />
+            <p class="text-[10px] font-mono text-brand-silver truncate mt-1.5">${file.name}</p>
+          `;
+          previewContainer.appendChild(card);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // =======================================================================
+    // INICIALIZAÇÃO GERAL DA PÁGINA
+    // =======================================================================
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initBrandLogo();
+      updateHeroViewer('white', 'front');
+      renderAvailableTShirts();
+      renderFutureProducts();
+      renderCart();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
